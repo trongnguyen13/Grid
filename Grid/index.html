@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" />-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <!--PQ Grid files-->
+
+    <script src="scripts/pqgrid.dev.js"></script>
+    <!--PQ Grid Office theme-->
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/pqgrid.dev.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!--http://paramquery.com/demos-->
+</head>
+<body>
+    <script>
+        $(function () {
+            var data = [
+             { rank: 1, company: 'Exxon Mobil </br> werwer', country: 'US', jobtype: 'Software', revenues: '339,938.0', profits: '36,130.0' },
+             { rank: 2, company: 'Wal-Mart Stores', country: 'NZ', jobtype: 'Marketing', revenues: '315,654.0', profits: '11,231.0' },
+             { rank: 3, company: 'Royal Dutch Shell', country: 'US', jobtype: 'Software', revenues: '306,731.0', profits: '25,311.0' },
+             { rank: 4, company: 'BP', country: 'NZ', jobtype: 'Marketing', revenues: '267,600.0', profits: '22,341.0' },
+             { rank: 5, company: 'General Motors', country: 'NZ', jobtype: 'Accounting', revenues: '192,604.0', profits: '-10,567.0' },
+             { rank: 6, company: 'Chevron', country: 'AU', jobtype: 'Accounting', revenues: '189,481.0', profits: '14,099.0' },
+             { rank: 7, company: 'DaimlerChrysler', country: 'NZ', jobtype: 'Software', revenues: '186,106.3', profits: '3,536.3' },
+             { rank: 8, company: 'Toyota Motor', country: 'AU', jobtype: 'Marketing', revenues: '185,805.0', profits: '12,119.6' },
+             { rank: 9, company: 'Ford Motor', country: 'US', jobtype: 'Software', revenues: '177,210.0', profits: '2,024.0' },
+             { rank: 10, company: 'ConocoPhillips', country: 'AU', jobtype: 'Accounting', revenues: '166,683.0', profits: '13,529.0' },
+             { rank: 11, company: 'General Electric', country: 'NZ', jobtype: 'Software', revenues: '157,153.0', profits: '16,353.0' },
+             { rank: 12, company: 'Total', country: 'NZ', jobtype: 'Accounting', revenues: '152,360.7', profits: '15,250.0' },
+             { rank: 13, company: 'ING Group', country: 'AU', jobtype: 'Software', revenues: '138,235.3', profits: '8,958.9' },
+             { rank: 14, company: 'Citigroup', country: 'US', jobtype: 'Marketing', revenues: '131,045.0', profits: '24,589.0' },
+             { rank: 15, company: 'AXA', country: 'NZ', jobtype: 'Accounting', revenues: '129,839.2', profits: '5,186.5' },
+             { rank: 16, company: 'Allianz', country: 'AU', jobtype: 'Software', revenues: '121,406.0', profits: '5,442.4' },
+             { rank: 17, company: 'Volkswagen', country: 'AU', jobtype: 'Marketing', revenues: '118,376.6', profits: '1,391.7' },
+             { rank: 18, company: 'Fortis', country: 'NZ', jobtype: 'Accounting', revenues: '112,351.4', profits: '4,896.3' },
+             { rank: 19, company: 'Crédit Agricole', country: 'US', jobtype: 'Software', revenues: '110,764.6', profits: '7,434.3' },
+             { rank: 20, company: 'American Intl. Group', country: 'AU', jobtype: 'Marketing', revenues: '108,905.0', profits: '10,477.0' }
+            ];
+
+
+            var obj = { width: 1000, height: 400, title: "ParamQuery Grid Example", resizable: true, draggable: false };
+            obj.colModel = [{ title: "Rank", width: 100, dataType: "integer", dataIndx: "rank" },
+            { title: "Company", width: 200, dataType: "string", dataIndx: "company" },
+            { title: "Country", width: 100, dataType: "string", dataIndx: "country", hidden: true },
+            { title: "Job Type", width: 100, dataType: "string", dataIndx: "jobtype", hidden: true },
+            { title: "Revenues ($ millions)", width: 150, dataType: "float", align: "right", dataIndx: "revenues" },
+            { title: "Profits ($ millions)", width: 150, dataType: "float", align: "right", dataIndx: "profits" }];
+            obj.dataModel = {
+                data: data,
+                sorting: "local"
+            };
+            obj.groupModel = {
+                dataIndx: ["jobtype", "country"],
+                collapsed: [true, true],
+                title: ["<b style='font-weight:bold;'>{0} ({1})</b>", "{0} - {1}"],
+                //dir: ["up", "down"]
+                //,icon: ["circle-plus", "circle-triangle", "triangle"]
+            };
+            obj.numberCell = { show: false };
+            obj.selectionModel = { type: 'row' };
+            obj.editable = false;
+           // obj.pageModel = { type: "local", rPP: 5, strRpp: "{0}", strDisplay: "{0} to {1} of {2}" };
+            $("#grid_array").pqGrid(obj);
+
+        });
+
+    </script>
+
+    <div id="grid_array" style="margin:100px;"></div>
+</body>
+</html>
